@@ -1,104 +1,250 @@
-# **Projeto NFT Python Floripa**
+# NFT OpenAPI Definition
 
-## Resumo do Projeto
+## Working on your OpenAPI Definition
 
-O projeto de NFT da comunidade Python Floripa visa desenvolver uma plataforma colaborativa para criar, resgatar e validar NFTs, com foco na capacitação dos membros da comunidade e na aplicação prática de tecnologias blockchain. A ferramenta será utilizada inicialmente pela comunidade Python Floripa, porém estará aberta a outras comunidades e organizações públicas e privadas, permitindo a difusão de NFTs e blockchain de forma acessível e prática.
+### Install
 
-## Objetivos Principais
+1. Install [Node JS](https://nodejs.org/).
+2. Clone this repo and run `npm install` in the repo root.
 
-1. **Capacitação dos membros:** Criar oportunidades para que desenvolvedores da comunidade Python Floripa aprendam e implementem soluções blockchain.  
-     
-2. **Conteúdo de referência:** Produzir documentação e conteúdo que sirvam como referência para a comunidade em geral.  
-     
-3. **Plataforma de NFTs:** Desenvolver uma plataforma de ponta a ponta que integre um provedor de blockchain, como Ethereum, para permitir o cadastro, resgate e validação de NFTs.  
-     
-4. **Aplicações práticas:** Criar soluções práticas como:  
-* Certificados de participação em eventos, gerados automaticamente com base no check-in dos participantes.  
-* NFTs de cards para eventos e palestras, permitindo que participantes resgatem NFTs personalizados com base na sua presença.
+### Usage
 
-**Certificado de Participação via NFT**: Cada participante que fizer check-in em um evento da Python Floripa poderá resgatar um NFT como certificado digital, garantindo a autenticidade de sua participação.  
-**Cards NFT para eventos e palestras**: Cada evento ou atividade da comunidade terá um card digital vinculado a um NFT, que poderá ser resgatado por participantes após validação do check-in.  
-**Popularização da Blockchain**: Facilitar a compreensão e utilização da tecnologia blockchain por parte da comunidade e da sociedade em geral, aproximando os desenvolvedores da prática e fomentando a difusão desse conhecimento.
+#### `npm start`
+Starts the reference docs preview server.
 
-## Objetivos Específicos
+#### `npm run build`
+Bundles the definition to the dist folder.
 
-1. **Ferramenta para várias comunidades:** A plataforma será disponibilizada publicamente e poderá ser utilizada por outras comunidades interessadas, mediante a compra de créditos para cobrir os custos de infraestrutura, como o pagamento ao provedor de blockchain.  
-     
-2. **Desenvolvimento colaborativo:** Todo o código-fonte será desenvolvido de forma colaborativa e aberto no GitHub da comunidade Python Floripa.  
-     
-3. **Construção de autoridade:** Participantes diretos do desenvolvimento poderão adicionar suas contribuições ao projeto em seus portfólios, destacando sua participação para fins de progressão profissional.  
-     
-4. **Documentação e Live Weeklys:** O desenvolvimento será documentado e acompanhado por transmissões semanais ao vivo entre os membros do squad de desenvolvimento, para discutir a evolução, distribuir demandas e relatar a evolução do projeto. Essas lives serão disponibilizadas no YouTube da comunidade.
+#### `npm test`
+Validates the definition.
 
-## Especificação Técnica
+## Contribution Guide
 
-### Estrutura da Plataforma
+Below is a sample contribution guide. The tools
+in the repository don't restrict you to any
+specific structure. Adjust the contribution guide
+to match your own structure. However, if you
+don't have a structure in mind, this is a
+good place to start.
 
-1. **Backend:** A plataforma será desenvolvida em Python, com integração a um provedor de blockchain (e.g., Ethereum). Será responsável por:  
-* Gerenciar o cadastro dos eventos e usuários.  
-* Verificar o check-in dos participantes nos eventos.  
-* Emitir e associar NFTs aos participantes.  
-    
-2. **Frontend:** Interface simples e amigável para permitir que os usuários façam o resgate dos NFTs gerados. O design será responsivo, permitindo fácil acesso em diferentes dispositivos.  
-     
-3. **Integração com Blockchain:** A plataforma terá integração com o blockchain escolhido (e.g., Ethereum) para a criação e validação dos NFTs. Utilizaremos smart contracts para garantir a segurança e transparência das transações.  
-     
-4. **Banco de Dados:** Sistema de banco de dados para armazenar os eventos, usuários, e NFTs gerados, garantindo a rastreabilidade e segurança dos dados.
+Update this contribution guide if you
+adjust the file/folder organization.
 
-### Cronograma e Marcos do Projeto
-
-1. **Planejamento e Design** (prazo?):  
-* Definir os requisitos detalhados.  
-* Estruturar o backend e a integração com o blockchain.  
-* Prototipar a interface.  
-    
-2. **Desenvolvimento** (prazo?):  
-* Implementação do backend e frontend.  
-* Configuração da integração com o blockchain.  
-* Testes iniciais com a comunidade.  
-* Publicar documentação no GitHub.  
-    
-3. **Lançamento Beta** (prazo?):  
-* Disponibilizar a versão beta da plataforma para testes com os membros da comunidade.  
-    
-4. **Ajustes e Lançamento** (prazo?):  
-* Correção e ajustes de código.  
-* Realizar lives de apresentação da solução.  
-* Recrutar embaixadores para divulgar o projeto em eventos diversos.  
-* Divulgação nas redes sociais e eventos da comunidade.
-
-## Referencias
-
-**Benchmark**
-[https://poap.xyz/](https://poap.xyz/) 
-
-**Ferramentas para Desenhar Arquitetura** 
-draw.io  
-[https://structurizr.com](https://structurizr.com/)  
- 
-## Comentários e Devaneios
-
-## Requisitos funcionais
-
-- Usuário
-
-- Eventos
-  - tipos de usuários:
-    - admin
-    - apoio
-    - palestrante
-    - participante
-  - check-in
-    - self service?
-
-- Atividade
-  - check in
-  - QR code no meio da atividade
-
-- Certificados
-  - certifica que participou das atividades do Eventos
-
-## Requisitos não-funcionais
-- deploy na AWS (?)
+The `.redocly.yaml` controls settings for various
+tools including the lint tool and the reference
+docs engine.  Open it to find examples and
+[read the docs](https://redoc.ly/docs/cli/configuration/)
+for more information.
 
 
+### Schemas
+
+#### Adding Schemas
+
+1. Navigate to the `openapi/components/schemas` folder.
+2. Add a file named as you wish to name the schema.
+3. Define the schema.
+4. Refer to the schema using the `$ref` (see example below).
+
+##### Example Schema
+This is a very simple schema example:
+```yaml
+type: string
+description: The resource ID. Defaults to UUID v4
+maxLength: 50
+example: 4f6cf35x-2c4y-483z-a0a9-158621f77a21
+```
+This is a more complex schema example:
+```yaml
+type: object
+properties:
+  id:
+    description: The customer identifier string
+    readOnly: true
+    allOf:
+      - $ref: ./ResourceId.yaml
+  websiteId:
+    description: The website's ID
+    allOf:
+      - $ref: ./ResourceId.yaml
+  paymentToken:
+    type: string
+    writeOnly: true
+    description: |
+      A write-only payment token; if supplied, it will be converted into a
+      payment instrument and be set as the `defaultPaymentInstrument`. The
+      value of this property will override the `defaultPaymentInstrument`
+      in the case that both are supplied. The token may only be used once
+      before it is expired.
+  defaultPaymentInstrument:
+    $ref: ./PaymentInstrument.yaml
+  createdTime:
+    description: The customer created time
+    allOf:
+      - $ref: ./ServerTimestamp.yaml
+  updatedTime:
+    description: The customer updated time
+    allOf:
+      - $ref: ./ServerTimestamp.yaml
+  tags:
+    description: A list of customer's tags
+    readOnly: true
+    type: array
+    items:
+      $ref: ./Tags/Tag.yaml
+  revision:
+    description: >
+      The number of times the customer data has been modified.
+
+      The revision is useful when analyzing webhook data to determine if the
+      change takes precedence over the current representation.
+    type: integer
+    readOnly: true
+  _links:
+    type: array
+    description: The links related to resource
+    readOnly: true
+    minItems: 3
+    items:
+      anyOf:
+        - $ref: ./Links/SelfLink.yaml
+        - $ref: ./Links/NotesLink.yaml
+        - $ref: ./Links/DefaultPaymentInstrumentLink.yaml
+        - $ref: ./Links/LeadSourceLink.yaml
+        - $ref: ./Links/WebsiteLink.yaml
+  _embedded:
+    type: array
+    description: >-
+      Any embedded objects available that are requested by the `expand`
+      querystring parameter.
+    readOnly: true
+    minItems: 1
+    items:
+      anyOf:
+        - $ref: ./Embeds/LeadSourceEmbed.yaml
+
+```
+
+##### Using the `$ref`
+
+Notice in the complex example above the schema definition itself has `$ref` links to other schemas defined.
+
+Here is a small excerpt with an example:
+
+```yaml
+defaultPaymentInstrument:
+  $ref: ./PaymentInstrument.yaml
+```
+
+The value of the `$ref` is the path to the other schema definition.
+
+You may use `$ref`s to compose schema from other existing schema to avoid duplication.
+
+You will use `$ref`s to reference schema from your path definitions.
+
+#### Editing Schemas
+
+1. Navigate to the `openapi/components/schemas` folder.
+2. Open the file you wish to edit.
+3. Edit.
+
+### Paths
+
+#### Adding a Path
+
+1. Navigate to the `openapi/paths` folder.
+2. Add a new YAML file named like your URL endpoint except replacing `/` with `@` and putting path parameters into curly braces like `{example}`.
+3. Add the path and a ref to it inside of your `openapi.yaml` file inside of the `openapi` folder.
+
+Example addition to the `openapi.yaml` file:
+```yaml
+'/customers/{id}':
+  $ref: './paths/customers@{id}.yaml'
+```
+
+Here is an example of a YAML file named `customers@{id}.yaml` in the `paths` folder:
+
+```yaml
+get:
+  tags:
+    - Customers
+  summary: Retrieve a list of customers
+  operationId: GetCustomerCollection
+  description: |
+    You can have a markdown description here.
+  parameters:
+    - $ref: ../components/parameters/collectionLimit.yaml
+    - $ref: ../components/parameters/collectionOffset.yaml
+    - $ref: ../components/parameters/collectionFilter.yaml
+    - $ref: ../components/parameters/collectionQuery.yaml
+    - $ref: ../components/parameters/collectionExpand.yaml
+    - $ref: ../components/parameters/collectionFields.yaml
+  responses:
+    '200':
+      description: A list of Customers was retrieved successfully
+      headers:
+        Rate-Limit-Limit:
+          $ref: ../components/headers/Rate-Limit-Limit.yaml
+        Rate-Limit-Remaining:
+          $ref: ../components/headers/Rate-Limit-Remaining.yaml
+        Rate-Limit-Reset:
+          $ref: ../components/headers/Rate-Limit-Reset.yaml
+        Pagination-Total:
+          $ref: ../components/headers/Pagination-Total.yaml
+        Pagination-Limit:
+          $ref: ../components/headers/Pagination-Limit.yaml
+        Pagination-Offset:
+          $ref: ../components/headers/Pagination-Offset.yaml
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Customer.yaml
+        text/csv:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Customer.yaml
+    '401':
+      $ref: ../components/responses/AccessForbidden.yaml
+  x-code-samples:
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/customers/get.php
+post:
+  tags:
+    - Customers
+  summary: Create a customer (without an ID)
+  operationId: PostCustomer
+  description: Another markdown description here.
+  requestBody:
+    $ref: ../components/requestBodies/Customer.yaml
+  responses:
+    '201':
+      $ref: ../components/responses/Customer.yaml
+    '401':
+      $ref: ../components/responses/AccessForbidden.yaml
+    '409':
+      $ref: ../components/responses/Conflict.yaml
+    '422':
+      $ref: ../components/responses/InvalidDataError.yaml
+  x-code-samples:
+    - lang: PHP
+      source:
+        $ref: ../code_samples/PHP/customers/post.php
+```
+
+You'll see extensive usage of `$ref`s in this example to different types of components including schemas.
+
+You'll also notice `$ref`s to code samples.
+
+### Code samples
+
+1. Navigate to the `openapi/code_samples` folder.
+2. Navigate to the `<language>` (e.g. PHP) sub-folder.
+3. Navigate to the `path` folder, and add ref to the code sample.
+
+You can add languages by adding new folders at the appropriate path level.
+
+More details inside the `code_samples` folder README.
