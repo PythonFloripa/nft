@@ -1,0 +1,15 @@
+type: object
+title: Create User
+description: Create a new user
+required:
+  - orgName
+  - eventName
+allOf:
+  - $ref: ../components/schemas/Certificate.yaml
+properties:
+  action:
+    type: string
+    enum:
+      - StartCreateCerts
+    format: text
+    description: Action to be performed

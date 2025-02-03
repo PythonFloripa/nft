@@ -1,0 +1,11 @@
+properties:
+  orgName:
+    description: Organization name
+    type: string
+    format: test
+    example: "Example Inc."
+  eventName:
+    description: Event name
+    type: string
+    format: test
+    example: "Example Event"
