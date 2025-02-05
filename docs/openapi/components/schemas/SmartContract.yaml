@@ -1,0 +1,24 @@
+type: object
+properties:
+  eventName:
+    description: Full event name
+    type: string
+    minLength: 5
+    example: 82º Python Floripa
+  eventTime:
+    description: Date and Time of the registration
+    type: string
+      format: date-time
+    example: 2025-02-04T22:32:22
+  eventLocation:
+    description: Latitude and longitude of the event location
+    type: array
+    items:
+      type: number
+    minItems: 2
+    example: [37.24310, 115.79300]
+  fileHash:
+    description: Hash of the final certificate file
+    type: string
+    minLength: 19
+    example: 1291272085159665688

@@ -1,0 +1,4 @@
+properties:
+  RecordStatus:
+    description: Result of record of data in the blockchain
+    type: boolean
