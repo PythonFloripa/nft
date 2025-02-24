@@ -1,0 +1,5 @@
+properties:
+  attendeeCounter:
+    description: Number of attendees
+    type: integer
+    format: int32

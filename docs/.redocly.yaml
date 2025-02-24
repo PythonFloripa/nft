@@ -1,0 +1,26 @@
+# See https://redoc.ly/docs/cli/configuration/ for more information.
+extends:
+  - recommended
+apis:
+  core@v1:
+    root: ./openapi/openapi.yaml
+    rules:
+      no-ambiguous-paths: error
+    theme:
+      openapi:
+        hideLogo: false
+    decorators:
+      remove-x-internal: on
+rules:
+  no-unused-components: error
+  operation-singular-tag: warn
+  boolean-parameter-prefixes:
+    severity: error
+    prefixes: ["can", "is", "has"]
+theme:
+  openapi:
+    schemaExpansionLevel: 2
+    generateCodeSamples:
+      languages:
+        - lang: curl
+        - lang: Python
