@@ -1,0 +1,16 @@
+type: object
+title: Blockchain Record
+description: Make a Blockchain Record with  SmartContract
+required:
+  - eventName
+  - eventTime
+  - fileHash
+allOf:
+  - $ref: ../components/schemas/SmartContract.yaml
+properties:
+  action:
+    type: string
+    enum:
+      - StartMakeRecord
+    format: text
+    description: Action to be performed
