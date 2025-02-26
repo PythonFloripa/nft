@@ -1,0 +1,25 @@
+type: object
+title: Create User
+description: Create a new user
+required:
+  - name
+  - email
+  - action
+  - otp
+allOf:
+  - $ref: ../components/schemas/User.yaml
+  - $ref: ../components/schemas/Email.yaml
+properties:
+  action:
+    type: string
+    enum:
+      - verify
+      - register
+      - process-link
+    format: test
+    description: Action to be performed
+  otp:
+    type: string
+    example: "123456"
+    format: test
+    description: OTP code

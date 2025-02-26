@@ -1,0 +1,99 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: NFT Python Floripa
+  termsOfService: "https://example.com/terms/"
+  contact:
+    email: contact@example.com
+    url: "http://example.com/contact"
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  x-logo:
+    url: "https://redocly.github.io/openapi-template/logo.png"
+  description: >
+    NFT API Documentation.
+externalDocs:
+  description: Find out how to create a GitHub repo for your OpenAPI definition.
+  url: "https://github.com/Rebilly/generator-openapi-repo"
+tags:
+  - name: Cadastro
+    description: Example echo operations
+  - name: Certificado
+    description: Operations about user
+servers:
+  - url: "https://pop.cloudman.pro"
+paths:
+  /pop/Auth-pop:
+    post:
+      operationId: create_user
+      tags:
+        - Cadastro
+      summary: Create a new user
+      deprecated: false
+      description: Create a new user
+      requestBody:
+        description: User object that needs to be added to the system
+        content:
+          application/json:
+            schema:
+              $ref: ./requests/CreateUser.yaml
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ./components/schemas/User.yaml
+            application/xml:
+              schema:
+                $ref: ./components/schemas/User.yaml
+        "400":
+          description: Invalid user supplied
+        "409":
+          description: User already exists
+  /pop/OrgAdmin-pop:
+    post:
+      operationId: create_certificate
+      tags:
+        - Certificado
+      summary: Create a new certificate
+      deprecated: false
+      description: Create a new certificate
+      requestBody:
+        description: Certificate object that needs to be added to the system
+        content:
+          application/json:
+            schema:
+              $ref: ./requests/CreateCertificate.yaml
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: ./responses/CertificateCreated.yaml
+            application/xml:
+              schema:
+                $ref: ./responses/CertificateCreated.yaml
+        "409":
+          description: Item não encontrado na DynamoDB
+components:
+  securitySchemes:
+    main_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: "http://example.com/api/oauth/dialog"
+          scopes:
+            "read:users": read users info
+            "write:users": modify or remove users
+    api_key:
+      type: apiKey
+      in: header
+      name: api_key
+    basic_auth:
+      type: http
+      scheme: basic
